@@ -28,45 +28,29 @@
       <!-- Marquee -->
       <div class="overflow-hidden">
         <div
-          class="flex space-x-12 animate-marquee hover:animate-marquee-paused"
+          class="flex"
           :class="{ 'animate-marquee-paused': isHovered }"
           @mouseenter="isHovered = true"
           @mouseleave="isHovered = false"
         >
-          <!-- First set of logos -->
-          <div v-for="i in 2" :key="`first-${i}`" class="flex space-x-12">
+          <!-- Logos duplicated for seamless scroll -->
+          <div
+            v-for="i in 2"
+            :key="i"
+            class="flex flex-shrink-0 items-center justify-around space-x-12 animate-marquee-infinite"
+          >
             <div
               v-for="logo in logos"
-              :key="logo.name"
+              :key="`${logo.name}-${i}`"
               class="flex items-center justify-center min-w-[150px]"
             >
               <div class="group relative">
                 <div
                   class="absolute inset-0 bg-luxury-gold/20 blur-xl group-hover:bg-luxury-gold/30 transition-all duration-500"
                 ></div>
-                <div class="relative glass-effect px-6 py-4 rounded-lg">
-                  <span
-                    class="text-2xl font-display font-bold text-white/80 group-hover:text-luxury-gold transition-colors"
-                  >
-                    {{ logo.name }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Duplicate for seamless loop -->
-          <div v-for="i in 2" :key="`second-${i}`" class="flex space-x-12">
-            <div
-              v-for="logo in logos"
-              :key="`${logo.name}-dup`"
-              class="flex items-center justify-center min-w-[150px]"
-            >
-              <div class="group relative">
                 <div
-                  class="absolute inset-0 bg-luxury-gold/20 blur-xl group-hover:bg-luxury-gold/30 transition-all duration-500"
-                ></div>
-                <div class="relative glass-effect px-6 py-4 rounded-lg">
+                  class="relative glass-effect px-6 py-4 rounded-lg whitespace-nowrap"
+                >
                   <span
                     class="text-2xl font-display font-bold text-white/80 group-hover:text-luxury-gold transition-colors"
                   >
@@ -101,7 +85,8 @@ const logos = [
   { name: "TIFFANY" },
   { name: "GUCCI" },
   { name: "PRADA" },
-  { name: "LOUIS VUITTON" },
+  { name: "ZIZO" },
+  { name: "MIDO" },
   { name: "CHANEL" },
   { name: "HERMÈS" },
 ];
@@ -110,5 +95,22 @@ const logos = [
 <style scoped>
 .animation-delay-2000 {
   animation-delay: 2s;
+}
+
+@keyframes marquee-infinite {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee-infinite {
+  animation: marquee-infinite 40s linear infinite;
+}
+
+.animate-marquee-paused .animate-marquee-infinite {
+  animation-play-state: paused;
 }
 </style>

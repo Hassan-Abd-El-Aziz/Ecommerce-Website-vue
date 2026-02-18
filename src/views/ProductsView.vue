@@ -142,6 +142,7 @@
                 </span>
 
                 <button
+                  @click="addToCart(product)"
                   class="relative overflow-hidden px-4 py-2 rounded-lg bg-luxury-gold/10 hover:bg-luxury-gold text-luxury-gold hover:text-luxury-navy transition-all duration-300 group/btn"
                 >
                   <span class="relative z-10 text-sm font-semibold"
@@ -179,7 +180,7 @@
 import { ref, computed } from "vue";
 import { products } from "../data/products";
 import Navbar from "../components/Navbar.vue";
-
+import { useCartStore } from "../data/cart";
 const searchQuery = ref("");
 
 const filteredProducts = computed(() => {
@@ -197,6 +198,10 @@ const animations = ["fade-up", "fade-right", "zoom-in", "fade-left"];
 const getRandomAosAnimation = () => {
   return animations[Math.floor(Math.random() * animations.length)];
 };
+const cartStore = useCartStore();
+function addToCart(product) {
+  cartStore.addItem(product);
+}
 </script>
 
 <style scoped>

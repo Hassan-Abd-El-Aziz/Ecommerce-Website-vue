@@ -46,6 +46,7 @@
         <!-- Cart Icon -->
         <div class="flex items-center space-x-4">
           <button
+            @click="$router.push('/cart')"
             class="relative p-2 text-gray-300 hover:text-luxury-gold transition-colors"
           >
             <svg
@@ -63,9 +64,10 @@
               />
             </svg>
             <span
+              v-if="cartStore.cartCount > 0"
               class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
             >
-              3
+              {{ cartStore.cartCount }}
             </span>
           </button>
 
@@ -129,9 +131,10 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, Text } from "vue";
-
+import { useCartStore } from "../data/cart";
 const scrolled = ref(false);
 const isMobileMenuOpen = ref(false);
+const cartStore = useCartStore();
 
 const menuLinks = [
   { name: "الرئيسية", path: "/" },

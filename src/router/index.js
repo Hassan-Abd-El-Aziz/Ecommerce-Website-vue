@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import OffersView from "../views/OffersView.vue";
 import ProductsView from "../views/ProductsView.vue";
+import CartView from "../views/CartView.vue";
+import CategoriesView from "../views/CategoriesView.vue";
+import ContactView from "../views/ContactView.vue";
+import CheckoutView from "../views/CheckoutView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,17 +23,27 @@ const router = createRouter({
     {
       path: "/products",
       name: "products",
-      component: ProductsView, // مؤقتاً نفس الصفحة الرئيسية
+      component: ProductsView,
     },
     {
       path: "/categories",
       name: "categories",
-      component: HomeView, // مؤقتاً نفس الصفحة الرئيسية
+      component: CategoriesView,
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: CartView,
     },
     {
       path: "/contact",
       name: "contact",
-      component: HomeView, // مؤقتاً نفس الصفحة الرئيسية
+      component: ContactView,
+    },
+    {
+      path: "/checkout",
+      name: "checkout",
+      component: CheckoutView,
     },
   ],
   scrollBehavior(to, from, savedPosition) {

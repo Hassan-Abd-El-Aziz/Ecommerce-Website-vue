@@ -1,5 +1,6 @@
 <template>
   <footer
+    style="direction: rtl"
     class="relative bg-luxury-navy border-t border-white/10 pt-16 pb-8 overflow-hidden"
   >
     <!-- Background decoration -->
@@ -19,9 +20,7 @@
         <!-- About -->
         <div>
           <h3 class="font-display text-2xl font-bold mb-6">
-            <span class="gold-gradient bg-clip-text text-transparent"
-              >Luxe</span
-            >
+            <span class="gold-gradient bg-clip-text text-transparent">HAS</span>
           </h3>
           <p class="text-gray-400 mb-6">
             وجهتك الأولى للتسوق الفاخر، نقدم أفخم المنتجات من أشهر الماركات
