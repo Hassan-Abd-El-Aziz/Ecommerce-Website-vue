@@ -1,7 +1,12 @@
 <template>
   <nav
+    style="direction: rtl"
     class="fixed top-0 w-full z-50 transition-all duration-500"
-    :class="[scrolled ? 'glass-effect py-3' : 'bg-luxury-gold/50 py-6']"
+    :class="[
+      scrolled
+        ? 'glass-effect py-3 border-b-2 border-luxury-gold'
+        : 'bg-luxury-gold/80 py-4',
+    ]"
   >
     <div class="container mx-auto px-4 md:px-6">
       <div class="flex items-center justify-between">
@@ -9,16 +14,16 @@
         <div class="flex items-center">
           <router-link to="/" class="flex items-center space-x-2">
             <span
-              class="text-3xl font-display font-bold gold-gradient bg-clip-text text-gray-900 duration-500"
-              :class="[scrolled ? 'text-transparent' : 'text-gray-900']"
-            >
-              Luxe
-            </span>
-            <span
               class="text-2xl font-display font-bold gold-gradient bg-clip-text text-gray-900 duration-500"
               :class="[scrolled ? 'text-transparent' : 'text-gray-900']"
               >•</span
             >
+            <span
+              class="text-3xl font-display font-bold gold-gradient bg-clip-text text-gray-900 duration-500"
+              :class="[scrolled ? 'text-transparent' : 'text-gray-900']"
+            >
+              HAS
+            </span>
           </router-link>
         </div>
 
@@ -28,12 +33,12 @@
             v-for="link in menuLinks"
             :key="link.name"
             :href="link.path"
-            class="hover:text-luxury-gold transition-all duration-300 relative group text-gray-900 font-bold"
+            class="hover:text-white transition-all duration-300 relative group text-gray-900 font-bold"
             :class="[scrolled ? 'text-luxury-gold' : 'text-gray-900']"
           >
             {{ link.name }}
             <span
-              class="absolute bottom-0 left-0 w-0 h-0.5 bg-luxury-gold transition-all duration-300 group-hover:w-full"
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
             ></span>
           </a>
         </div>
@@ -58,7 +63,7 @@
               />
             </svg>
             <span
-              class="absolute -top-1 -right-1 bg-luxury-gold text-luxury-navy text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
             >
               3
             </span>
@@ -67,7 +72,8 @@
           <!-- Mobile Menu Button -->
           <button
             @click="toggleMenu"
-            class="lg:hidden p-2 text-gray-300 hover:text-luxury-gold"
+            class="lg:hidden p-2 text-gray-900 hover:text-white"
+            :class="[scrolled ? 'text-luxury-gold' : 'text-gray-900']"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -97,12 +103,19 @@
         leave-to-class="opacity-0 max-h-0"
       >
         <div v-show="isMobileMenuOpen" class="lg:hidden mt-4 overflow-hidden">
-          <div class="flex flex-col space-y-3 py-4 border-t border-white/10">
+          <div
+            class="flex flex-col space-y-3 py-4 border-t border-white/10 items-center"
+          >
             <a
               v-for="link in menuLinks"
               :key="link.name"
               :href="link.path"
-              class="text-gray-300 hover:text-luxury-gold py-2 px-4 hover:bg-white/5 rounded-lg transition-all"
+              class="text-gray-900 font-bold hover:text-luxury-gold py-2 px-4 hover:bg-white/5 rounded-lg transition-all border-b-[1px] border-black w-[80%] text-center"
+              :class="[
+                scrolled
+                  ? 'text-luxury-gold border-luxury-gold'
+                  : 'text-gray-900',
+              ]"
               @click="closeMenu"
             >
               {{ link.name }}

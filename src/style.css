@@ -64,7 +64,7 @@
 
 @layer components {
   .glass-effect {
-    @apply backdrop-blur-md bg-white/10 border border-white/20;
+    @apply backdrop-blur-md bg-black/30;
   }
 
   .luxury-gradient {

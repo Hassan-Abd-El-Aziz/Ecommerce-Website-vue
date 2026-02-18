@@ -80,4 +80,24 @@ export const products = [
     rating: 4.9,
     description: "إصدار محدود من الساعات الذهبية مع حركة أوتوماتيكية سويسرية",
   },
+  {
+    id: 9,
+    name: "سوار من الذهب الأبيض",
+    price: 15500,
+    image:
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "مجوهرات",
+    rating: 5.0,
+    description: "سوار مرصع بالألماس من الذهب الأبيض عيار 18 قيراط",
+  },
+  {
+    id: 10,
+    name: "سوار من الذهب الأبيض",
+    price: 15500,
+    image:
+      "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "مجوهرات",
+    rating: 5.0,
+    description: "سوار مرصع بالألماس من الذهب الأبيض عيار 18 قيراط",
+  },
 ];

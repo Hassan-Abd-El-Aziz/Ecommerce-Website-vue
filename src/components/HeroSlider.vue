@@ -14,7 +14,7 @@
       <img
         :src="slide.image"
         :alt="slide.title"
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover object-center"
         loading="eager"
       />
 
@@ -41,6 +41,7 @@
             data-aos="fade-up"
             data-aos-duration="1000"
             data-aos-delay="400"
+            @click="$router.push('/products')"
           >
             <span class="relative z-10">{{ slide.cta }}</span>
             <div
@@ -137,6 +138,18 @@ const slides = [
     cta: "تسوق الإكسسوارات",
     image:
       "https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+  },
+  {
+    title: "مجموع الشاشات الفاخرة",
+    subtitle: "أكمل إطلالتك بالإطلاع على أفضل الشاشات المميزة",
+    cta: "تسوق الشاشات",
+    image: "https://i.ibb.co/r2LPLt4N/klipartz-com-1.png",
+  },
+  {
+    title: "مجموع الموبيلات الفاخرة",
+    subtitle: "أكمل إطلالتك بالإطلاع على أفضل الهواتف المميزة",
+    cta: "تسوق الهواتف",
+    image: "https://m.media-amazon.com/images/I/61bjBijQIXL._AC_SL1500_.jpg",
   },
 ];
 

@@ -1,5 +1,6 @@
 <template>
-  <section class="py-20 luxury-gradient relative overflow-hidden">
+  <Navbar />
+  <section class="py-30 luxury-gradient relative overflow-hidden">
     <!-- Background decoration -->
     <div
       class="absolute top-0 right-0 w-1/3 h-1/3 bg-luxury-gold/5 rounded-full filter blur-3xl animate-float"
@@ -26,12 +27,44 @@
         </p>
       </div>
 
+      <!-- Search Box -->
+      <div
+        class="max-w-xl mx-auto mb-12 relative"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="ابحث عن منتج..."
+          class="w-full px-6 py-4 bg-white/5 border border-luxury-gold/30 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-luxury-gold focus:ring-1 focus:ring-luxury-gold transition-all duration-300 pl-12"
+        />
+        <div
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 text-luxury-gold"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+      </div>
+
       <!-- Products Grid -->
       <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
       >
         <div
-          v-for="product in someProducts"
+          v-for="product in filteredProducts"
           :key="product.id"
           class="group relative"
           :data-aos="getRandomAosAnimation()"
@@ -130,9 +163,9 @@
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="400"
-          @click="$router.push('/products')"
+          @click="$router.push('/home')"
         >
-          <span class="relative z-10">شوف باقي المنتجات</span>
+          <span class="relative z-10">العوده للصفحة الرئيسية</span>
           <div
             class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
           ></div>
@@ -143,8 +176,22 @@
 </template>
 
 <script setup>
+import { ref, computed } from "vue";
 import { products } from "../data/products";
-const someProducts = products.slice(0, 4);
+import Navbar from "../components/Navbar.vue";
+
+const searchQuery = ref("");
+
+const filteredProducts = computed(() => {
+  const query = searchQuery.value.toLowerCase();
+  return products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(query) ||
+      product.description.toLowerCase().includes(query) ||
+      product.category.toLowerCase().includes(query),
+  );
+});
+
 const animations = ["fade-up", "fade-right", "zoom-in", "fade-left"];
 
 const getRandomAosAnimation = () => {
