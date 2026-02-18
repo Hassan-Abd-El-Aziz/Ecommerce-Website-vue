@@ -4,9 +4,60 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="./src/assets/logo (4).png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ecommerce</title>
+    <title>eCommerce - Ramadan Kareem</title>
+    <style>
+      @keyframes swing {
+        0% {
+          transform: rotate(5deg);
+        }
+        50% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(5deg);
+        }
+      }
+      @keyframes swing-flipped {
+        0% {
+          transform: scaleX(-1) rotate(5deg);
+        }
+        50% {
+          transform: scaleX(-1) rotate(-5deg);
+        }
+        100% {
+          transform: scaleX(-1) rotate(5deg);
+        }
+      }
+      .ramadan-decoration {
+        position: fixed;
+        top: -10px;
+        width: 160px;
+        height: auto;
+        z-index: 9999;
+        pointer-events: none;
+        transform-origin: top center;
+      }
+      .top-left {
+        left: 10px;
+        animation: swing 4s infinite ease-in-out;
+      }
+      .top-right {
+        right: 10px;
+        animation: swing-flipped 4s infinite ease-in-out;
+      }
+    </style>
   </head>
   <body>
+    <img
+      src="./src/assets/rmadan.png"
+      class="ramadan-decoration top-left"
+      alt="Ramadan Lantern"
+    />
+    <img
+      src="./src/assets/rmadan.png"
+      class="ramadan-decoration top-right"
+      alt="Ramadan Lantern"
+    />
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
